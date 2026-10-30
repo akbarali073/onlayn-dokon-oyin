@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Admin paneli</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <main id="denied" class="center" hidden>
+      <div class="card pad">
+        <h2>Kirish rad etildi</h2>
+        <p class="muted" id="deniedMsg" style="margin-top: 8px"></p>
+        <a class="btn btn-soft btn-block" href="/" style="margin-top: 14px"
+          >Bosh sahifa</a
+        >
+      </div>
+    </main>
+
+    <div id="panel" hidden>
+      <header class="topbar">
+        <div class="logo" id="title"></div>
+        <span class="chip" id="status"></span>
+      </header>
+      <main class="wrap content">
+        <section class="card pad">
+          <div class="muted">Oʻquvchilar uchun havola</div>
+          <div class="linkbox">
+            <span id="link"></span
+            ><button class="btn btn-soft" id="copy">Nusxalash</button>
+          </div>
+          <div class="muted">Xona kodi: <b id="codeTxt"></b></div>
+        </section>
+
+        <section class="card pad" style="margin-top: 12px">
+          <div class="between">
+            <h2>Yakunlash sharti</h2>
+            <b id="pCount"></b>
+          </div>
+          <div class="bar"><i id="bar"></i></div>
+          <p class="muted" id="cond" style="margin: 10px 0 14px"></p>
+          <button class="btn btn-primary btn-block" id="finish" disabled>
+            Oʻyinni yakunlash
+          </button>
+        </section>
+
+        <div class="tabs">
+          <button class="tab on" data-tab="users">Qatnashchilar</button>
+          <button class="tab" data-tab="products">Eʼlonlar</button>
+          <button class="tab" data-tab="log">Xaridlar</button>
+        </div>
+        <div id="tab-users"></div>
+        <div id="tab-products" hidden></div>
+        <div id="tab-log" hidden></div>
+      </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/js/common.js"></script>
+    <script src="/public/js/admin.js"></script>
+  </body>
+</html>

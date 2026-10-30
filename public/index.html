@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Savdo oʻyini</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <main class="center">
+      <div class="logo">Savdo oʻyini</div>
+      <p class="muted">
+        Oʻquvchilar bir-birining mahsulotini sotib oladigan real vaqtli bozor.
+      </p>
+
+      <form id="createForm" class="card pad">
+        <h2>Oʻyin yaratish</h2>
+        <div class="field" style="margin-top: 14px">
+          <label for="title">Oʻyin nomi</label>
+          <input
+            id="title"
+            maxlength="80"
+            placeholder="Masalan, 7-A sinf bozori"
+            required
+          />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+          Xona yaratish
+        </button>
+        <p class="err" id="createErr"></p>
+      </form>
+
+      <form id="joinForm" class="card pad">
+        <h2>Oʻyinga qoʻshilish</h2>
+        <div class="field" style="margin-top: 14px">
+          <label for="code">Xona kodi</label>
+          <input
+            id="code"
+            maxlength="10"
+            autocapitalize="characters"
+            placeholder="A1B2C"
+            required
+          />
+        </div>
+        <button class="btn btn-soft btn-block" type="submit">
+          Davom etish
+        </button>
+        <p class="err" id="joinErr"></p>
+      </form>
+    </main>
+    <script src="/public/js/home.js"></script>
+  </body>
+</html>

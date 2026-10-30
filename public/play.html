@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Savdo oʻyini</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <main id="joinScreen" class="center">
+      <div class="logo">Savdo oʻyini</div>
+      <form id="joinForm" class="card pad">
+        <h2 id="joinTitle">Oʻyinga qoʻshilish</h2>
+        <div class="field" style="margin-top: 14px">
+          <label for="nameIn">Ism-sharifingiz</label>
+          <input
+            id="nameIn"
+            maxlength="40"
+            autocomplete="name"
+            placeholder="Aliyev Vali"
+            required
+          />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+          Qoʻshilish
+        </button>
+        <p class="err" id="joinErr"></p>
+      </form>
+    </main>
+
+    <div id="app" hidden>
+      <header class="topbar">
+        <div class="logo" id="roomTitle"></div>
+        <span class="chip" id="chip"></span>
+      </header>
+
+      <main class="wrap content">
+        <section id="view-feed" class="view">
+          <div id="hint" class="hint"></div>
+          <div id="feed" class="grid"></div>
+        </section>
+
+        <section id="view-sell" class="view" hidden>
+          <form id="sellForm" class="card pad">
+            <h2>Yangi eʼlon</h2>
+            <div class="field" style="margin-top: 14px">
+              <label for="fName">Mahsulot nomi</label>
+              <input id="fName" maxlength="80" required />
+            </div>
+            <div class="field">
+              <label for="fUrl">Rasm havolasi (URL)</label>
+              <input
+                id="fUrl"
+                type="url"
+                inputmode="url"
+                placeholder="https://..."
+              />
+            </div>
+            <div class="field">
+              <label for="fFile">Yoki rasm yuklang</label>
+              <label class="btn btn-soft" for="fFile">Rasm tanlash</label>
+              <input id="fFile" type="file" accept="image/*" hidden />
+              <img id="preview" class="preview" alt="" hidden />
+            </div>
+            <div class="field">
+              <label for="fPrice">Narxi (soʻm)</label>
+              <input
+                id="fPrice"
+                type="number"
+                inputmode="numeric"
+                min="1"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="fDesc">Tavsif</label>
+              <textarea id="fDesc" maxlength="500"></textarea>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">
+              Yaratish
+            </button>
+          </form>
+          <h2 class="sec">Mening eʼlonlarim</h2>
+          <div id="mine"></div>
+        </section>
+
+        <section id="view-orders" class="view" hidden>
+          <h2 class="sec">Xaridlarim</h2>
+          <div id="orders"></div>
+        </section>
+      </main>
+
+      <nav class="tabbar">
+        <button data-view="feed" class="on">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 10l8-6 8 6v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z" /></svg
+          >Bozor
+        </button>
+        <button data-view="sell">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg>Eʼlon
+        </button>
+        <button data-view="orders">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 6h14l-2 9H8zM6 6L5 3H2M9 20h.01M17 20h.01" /></svg
+          >Xaridlar
+        </button>
+      </nav>
+    </div>
+
+    <div id="sheet" class="sheet" hidden>
+      <div class="sheet-bg" id="shClose"></div>
+      <div class="sheet-panel card">
+        <div class="sheet-head">
+          <img id="shImg" alt="" />
+          <div>
+            <h3 id="shName"></h3>
+            <div id="shPrice" class="muted"></div>
+          </div>
+        </div>
+        <div class="qty">
+          <button class="btn btn-soft" id="qMinus" aria-label="Kamaytirish">
+            −
+          </button>
+          <input
+            id="qVal"
+            type="number"
+            inputmode="numeric"
+            min="1"
+            max="100"
+            value="1"
+            aria-label="Miqdor"
+          />
+          <button class="btn btn-soft" id="qPlus" aria-label="Koʻpaytirish">
+            +
+          </button>
+        </div>
+        <div class="sum"><span>Jami</span><b id="shTotal"></b></div>
+        <button class="btn btn-primary btn-block" id="shBuy">
+          Xaridni tasdiqlash
+        </button>
+      </div>
+    </div>
+
+    <div id="finished" class="finished" hidden>
+      <h1>Oʻyin yakunlandi</h1>
+      <div id="finalBody"></div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/js/common.js"></script>
+    <script src="/public/js/play.js"></script>
+  </body>
+</html>
